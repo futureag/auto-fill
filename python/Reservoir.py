@@ -60,13 +60,13 @@ class MVP_Reservoir:
         start_ec=self.getEC()
         start_t=time.time()
         pump=Pump()
-        pump.open()
+        pump.on()
         # Loop till filled or times out
         while (not self.isFull()) and self.isFilling(start_t):
             self._logger.debug("{}".format("In Fill Loop"))                                            
         self._logger.debug("{}".format("Exit Fill Loop, close solenoid"))                                            
         # Close valve
-        pump.close()
+        pump.off()
         # Calculate amount filled
         stop_t=time.time()        
         stop_ec=self.getEC()
